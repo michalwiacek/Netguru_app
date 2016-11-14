@@ -1,6 +1,11 @@
+language: ruby
 rvm:
   - 2.2.3
 before_script:
+  - rm config/database.yml
+  - cp cofnig/database.yml.travis config/database.yml
   - psql -c 'create database workshops_test;' -U postgres
+services:
+  -postgresql
 addons:
   postgresql: '9.3'
